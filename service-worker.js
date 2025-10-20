@@ -8,7 +8,7 @@ self.importScripts(
 const channel = new BroadcastChannel("sw-messages");
 
 const VER = VERSION;
-const CACHE_NAME = `tamaweb-${VER}`;
+const CACHE_NAME = `tamakaki-${VER}`;
 // channel.postMessage({type: 'version', value: VER});
 const ASSETS = [
   // main

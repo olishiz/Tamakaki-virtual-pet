@@ -1,47 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PMN42B2LR"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-0PMN42B2LR');
-    </script>
-    <!-- Sentry -->
-    <!-- <script src='https://js-de.sentry-cdn.com/c23629fb79e43e3e8361e1775451f6c0.min.js' crossorigin="anonymous"></script> -->
-    <!-- RudderStack -->
-    <script type="text/javascript">
-        !function(){"use strict";window.RudderSnippetVersion="3.0.32";var e="rudderanalytics";window[e]||(window[e]=[])
-        ;var rudderanalytics=window[e];if(Array.isArray(rudderanalytics)){
-        if(true===rudderanalytics.snippetExecuted&&window.console&&console.error){
-        console.error("RudderStack JavaScript SDK snippet included more than once.")}else{rudderanalytics.snippetExecuted=true,
-        window.rudderAnalyticsBuildType="legacy";var sdkBaseUrl="https://cdn.rudderlabs.com/v3";var sdkName="rsa.min.js"
-        ;var scriptLoadingMode="async"
-        ;var r=["setDefaultInstanceKey","load","ready","page","track","identify","alias","group","reset","setAnonymousId","startSession","endSession","consent"]
-        ;for(var n=0;n<r.length;n++){var t=r[n];rudderanalytics[t]=function(r){return function(){var n
-        ;Array.isArray(window[e])?rudderanalytics.push([r].concat(Array.prototype.slice.call(arguments))):null===(n=window[e][r])||void 0===n||n.apply(window[e],arguments)
-        }}(t)}try{
-        new Function('class Test{field=()=>{};test({prop=[]}={}){return prop?(prop?.property??[...prop]):import("");}}'),
-        window.rudderAnalyticsBuildType="modern"}catch(o){}var d=document.head||document.getElementsByTagName("head")[0]
-        ;var i=document.body||document.getElementsByTagName("body")[0];window.rudderAnalyticsAddScript=function(e,r,n){
-        var t=document.createElement("script");t.src=e,t.setAttribute("data-loader","RS_JS_SDK"),r&&n&&t.setAttribute(r,n),
-        "async"===scriptLoadingMode?t.async=true:"defer"===scriptLoadingMode&&(t.defer=true),
-        d?d.insertBefore(t,d.firstChild):i.insertBefore(t,i.firstChild)},window.rudderAnalyticsMount=function(){!function(){
-        if("undefined"==typeof globalThis){var e;var r=function getGlobal(){
-        return"undefined"!=typeof self?self:"undefined"!=typeof window?window:null}();r&&Object.defineProperty(r,"globalThis",{
-        value:r,configurable:true})}
-        }(),window.rudderAnalyticsAddScript("".concat(sdkBaseUrl,"/").concat(window.rudderAnalyticsBuildType,"/").concat(sdkName),"data-rsa-write-key","2suQ2opn34RCpjg3z3L3aW4Nhzp")
-        },
-        "undefined"==typeof Promise||"undefined"==typeof globalThis?window.rudderAnalyticsAddScript("https://polyfill-fastly.io/v3/polyfill.min.js?version=3.111.0&features=Symbol%2CPromise&callback=rudderAnalyticsMount"):window.rudderAnalyticsMount()
-        ;var loadOptions={};rudderanalytics.load("2suQ2opn34RCpjg3z3L3aW4Nhzp","https://gmailautotdbwd.dataplane.rudderstack.com",loadOptions)}}}();
-    </script>
+    <!-- Analytics removed for hackathon demo -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamaweb</title>
-    <meta name="description" content="A virtual pet game inspired by modern Tamagotchis where you get to raise your own pets!">
+    <title>TamaKaki - Virtual Pet Game</title>
+    <meta name="description" content="TamaKaki - A virtual pet game for the UwU Core track at Delulu Hackerhouse Hackathon. Care for your digital pet and watch it grow!">
     <meta name="google-site-verification" content="dAerKFKSFvPgRL2A-O23ToYFXoNvqHutmDyC2QhvkHM" />
     <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
@@ -77,7 +41,10 @@
 
         <!-- loading text -->
         <div class="loading-text">
-            <img class="loading-logo blink" src="resources/img/ui/logo_trans_01.png"></img>
+            <div class="tamakaki-logo loading-logo blink">
+                <span class="tamakaki-text">TAMAKAKI</span>
+                <div class="tamakaki-slogan">Loading your friend...</div>
+            </div>
             <b id="loading-error"style="font-size: small;"></b>
             <i class="fa-solid fa-circle-notch fa-spin loading-spinner"></i>
         </div>
@@ -92,7 +59,10 @@
          </div>
 
         <div class="dom-shell" style="display: none;">
-            <img class="logo" src="resources/img/ui/logo_trans_01.png"></img>
+            <div class="tamakaki-logo">
+                <span class="tamakaki-text">TAMAKAKI</span>
+                <div class="tamakaki-slogan">Your Digital Friend! 🐾</div>
+            </div>
             <button class="shell-btn main" onclick="App.handlers.shell_button()" onmousedown="setTimeout(() => App.playSound('resources/sounds/shell_button_down.ogg', true))" onmouseup="setTimeout(() => App.playSound('resources/sounds/shell_button_up.ogg', true))"></button>
             <button class="shell-btn left" onclick="App.handlers.shell_button()" onmousedown="setTimeout(() => App.playSound('resources/sounds/shell_button_down.ogg', true))" onmouseup="setTimeout(() => App.playSound('resources/sounds/shell_button_up.ogg', true))"></button>
             <button class="shell-btn right" onclick="App.handlers.shell_button()" onmousedown="setTimeout(() => App.playSound('resources/sounds/shell_button_down.ogg', true))" onmouseup="setTimeout(() => App.playSound('resources/sounds/shell_button_up.ogg', true))"></button>
@@ -179,7 +149,7 @@
         <div class="progressbar">
             <div class="progressbar-background">
                 <div class="progressbar-rod">
-    
+
                 </div>
             </div>
         </div>
@@ -201,7 +171,7 @@
     <script src="https://cdn.jsdelivr.net/npm/profanity-cleaner@latest"></script>
     <script src="src/libs/moment.js"></script>
     <script src="src/libs/idb-keyval.js"></script>
-    
+
     <!-- scripts -->
     <script src="src/Version.js"></script>
     <script src="src/UiHelper.js"></script>

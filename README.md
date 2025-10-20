@@ -1,34 +1,32 @@
-![Tamaweb](https://img.itch.zone/aW1nLzIwNjE0MTY1LnBuZw==/original/GkKbBT.png)
+# TamaKaki 🐾
 
-### Tamaweb is a feature-rich virtual pet game.
+### A virtual pet game for the UwU Core track
 
-A Virtual Pet game project inspired by modern Tamagotchi devices, aiming to bring a pure virtual pet experience to multiple devices. Raise your pet from a baby to an elder, teaching them skills, taking them on adventures, customizing their home and a lot more!
+TamaKaki is a browser-based virtual pet game inspired by modern Tamagotchi devices. Care for your digital pet, watch it grow, and experience the joy of virtual companionship!
 
-### Platforms:
-- Browser
-- Windows
-- Android
-- PWA
+**Built for the UwU Core track at Delulu Hackerhouse Hackathon**
 
-### 🤝 Contributing
-Contributions are welcome! If you find a bug or have an idea for a new feature, feel free to open an issue or submit a pull request.
+### Features:
+- 🐣 Raise your pet from baby to elder
+- 🎮 Simple, intuitive gameplay
+- 🎨 Pixel art graphics
+- 🏠 Pet care mechanics (feeding, cleaning, playing)
+- 📱 Works in any modern browser
 
-### 💬 Join Our Community
-Connect with other players, get updates, give suggestions and share your progress on our official Discord server.
+### How to Play:
+1. Open the game in your browser
+2. Watch your pet hatch and grow
+3. Take care of its needs (hunger, happiness, cleanliness)
+4. Enjoy the journey!
 
-[Join the Discord Server](https://tamawebgame.github.io/discord)
+### Technical Details:
+- Pure JavaScript (no build system required)
+- HTML5 Canvas graphics
+- Offline-capable with Service Worker
+- Local storage for save data
 
-### 📄 License & Terms
-Distributed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License.
+### For Judges:
+This is a hackathon demo showcasing a complete virtual pet experience. The game demonstrates real-time pet simulation, sprite animation, and user interaction patterns.
 
-**For a full breakdown of the terms of use, please see the [Terms of Use](TERMS_OF_USE.md) file.**
-
-### 🔗 Official Links
-[Official Website](https://tamawebgame.github.io/) • [itch Version](https://samandev.itch.io/tamaweb) • [Official Wiki](https://tamaweb.wiki.gg/) • [Discord](https://tamawebgame.github.io/discord) • [Blog](https://tamawebgame.github.io/blog) • [Instagram](https://www.instagram.com/tamaweb_game/) • [TikTok](https://www.tiktok.com/@samandevgames?_t=8rmMbdc7Vnb&_r=1)
-
-### 📧 Contact
-🌐 https://tamawebgame.github.io
-
-✉️ autosam.sm@gmail.com
-
-🧑‍💻 Project Link: https://github.com/autosam/Tamaweb
+### License
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)

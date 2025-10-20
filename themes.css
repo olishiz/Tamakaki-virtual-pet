@@ -1,20 +1,21 @@
 .theme-default {
+    /* TAMAKAKI Minimalistic Blue Theme */
     /* vars */
-    --container-background: linear-gradient(0deg, #ffddb8, #ffe5ca);
-    --background-a: repeating-linear-gradient(-45deg, #ffddb8 0 15px, #ffe5ca 15px 30px);
-    --background-b: repeating-linear-gradient(-45deg, #ffcaf4 0 10px, #ffe5ca 10px 20px);
-    --background-c: repeating-linear-gradient(0deg, #ffd7bf 0 10px, #ffe5ca 10px 20px);
-    --background-d: repeating-linear-gradient(-45deg, #D88C9A 0 10px, #FBACBE 10px 20px);
-    --prim-clr-a: #3d00ff;
-    --prim-clr-b-bg: #fff4e8;
-    --prim-clr-b-border: #ffb362;
-    --prim-clr-b-text: #ff8000;
-    --prim-clr-b-text-shadow: #ffcf9d;
-    --prim-clr-b-shadow: #f5deb3;
-    --prim-clr-c-bg: repeating-linear-gradient(45deg, #ff9d3a 0 15px, #ff952b 15px 30px, #ffa952 30px 45px);
-    --prim-clr-c-text: #fff7ee;
-    --prim-clr-c-text-shadow: #cf6800;
-    --prim-clr-c-border: #ff572257;
+    --container-background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    --background-a: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    --background-b: linear-gradient(135deg, #e1f5fe, #b3e5fc);
+    --background-c: linear-gradient(135deg, #f1f8ff, #e3f2fd);
+    --background-d: linear-gradient(135deg, #e8f4f8, #d1ecf1);
+    --prim-clr-a: #1976d2;
+    --prim-clr-b-bg: #f8fdff;
+    --prim-clr-b-border: #42a5f5;
+    --prim-clr-b-text: #1976d2;
+    --prim-clr-b-text-shadow: #e3f2fd;
+    --prim-clr-b-shadow: #e3f2fd;
+    --prim-clr-c-bg: linear-gradient(135deg, #e3f2fd, #90caf9);
+    --prim-clr-c-text: #0d47a1;
+    --prim-clr-c-text-shadow: #ffffff;
+    --prim-clr-c-border: #1976d2;
     /* generic */
     .disabled {
         color: var(--prim-clr-b-text-shadow); 
