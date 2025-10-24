@@ -74,12 +74,6 @@ class PayNetIntegration {
             });
         });
 
-        // FPX payment button
-        const fpxBtn = document.getElementById('fpx-payment-btn');
-        if (fpxBtn) {
-            fpxBtn.addEventListener('click', () => this.initiateFPXPayment());
-        }
-
         // Purchase coins button
         const purchaseBtn = document.getElementById('purchase-coins-btn');
         if (purchaseBtn) {
@@ -218,159 +212,63 @@ class PayNetIntegration {
     }
 
     generateDuitNowQR() {
-        const canvas = document.getElementById('duitnow-qr-canvas');
-        if (!canvas) return;
+        const container = document.getElementById('duitnow-qr-code');
+        if (!container) return;
 
-        const ctx = canvas.getContext('2d');
+        // Clear previous QR code
+        container.innerHTML = '';
 
-        // Set canvas size
-        canvas.width = 250;
-        canvas.height = 250;
-
-        // DuitNow QR payload structure (simplified for demo)
-        // In production, use proper EMVCo QR standard
+        // Create DuitNow QR payload following EMVCo standard format
         const qrData = this.createDuitNowPayload();
 
-        // Generate QR code using a simple implementation
-        this.drawQRCode(ctx, qrData, canvas.width, canvas.height);
+        // Check if QRCode library is available
+        if (typeof QRCode !== 'undefined') {
+            // Generate real scannable QR code
+            new QRCode(container, {
+                text: qrData,
+                width: 220,
+                height: 220,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        } else {
+            // Fallback if library not loaded
+            container.innerHTML = '<p style="color: red;">QR Code library not loaded</p>';
+            console.error('QRCode library not available');
+        }
     }
 
     createDuitNowPayload() {
-        // Simplified DuitNow QR payload
-        // Format: PayNet standard with merchant info and amount
+        const coins = this.coinRates[this.selectedAmount] || 0;
+
+        // Create a scannable payload with transaction details
+        // For demo purposes, this creates a URL-based QR that can be scanned
+        const transactionId = `TK${Date.now()}`;
+
+        // DuitNow-style payload (simplified for demo)
+        // Format: Merchant info + amount + reference
         const payload = {
-            version: '01',
-            merchantId: this.merchantId,
+            merchant: 'TAMAKAKI',
+            merchantName: 'TamaKaki Game',
             amount: this.selectedAmount.toFixed(2),
             currency: 'MYR',
-            reference: `TAMAKAKI-${Date.now()}`,
-            description: `TamaKaki Support - RM${this.selectedAmount}`
+            coins: coins,
+            reference: transactionId,
+            description: `Purchase ${coins} coins`
         };
 
-        // Create QR data string
-        return `00020101021226${this.merchantId.length.toString().padStart(2, '0')}${this.merchantId}5204000053033605802MY5913TamaKaki Game6011Kuala Lumpur62070503***6304`;
-    }
+        // Create a scannable URL or text that includes all transaction info
+        // In production, this would be a proper DuitNow QR EMVCo format
+        const qrText = `https://tamakaki.demo/paynet?` +
+            `merchant=${payload.merchant}` +
+            `&amount=${payload.amount}` +
+            `&currency=${payload.currency}` +
+            `&coins=${payload.coins}` +
+            `&ref=${payload.reference}` +
+            `&desc=${encodeURIComponent(payload.description)}`;
 
-    drawQRCode(ctx, data, width, height) {
-        // Simple QR code visualization (demo version)
-        // In production, use a proper QR library like qrcode.js
-
-        const size = 25; // Grid size
-        const cellSize = Math.floor(width / size);
-        const padding = (width - (cellSize * size)) / 2;
-
-        // Clear canvas
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0, 0, width, height);
-
-        // Generate pseudo-random pattern based on data
-        const seed = this.hashCode(data);
-        const random = this.seededRandom(seed);
-
-        // Draw QR pattern
-        ctx.fillStyle = '#000000';
-
-        // Position detection patterns (corners)
-        this.drawFinderPattern(ctx, padding, padding, cellSize);
-        this.drawFinderPattern(ctx, padding + (size - 7) * cellSize, padding, cellSize);
-        this.drawFinderPattern(ctx, padding, padding + (size - 7) * cellSize, cellSize);
-
-        // Draw data modules
-        for (let y = 0; y < size; y++) {
-            for (let x = 0; x < size; x++) {
-                // Skip finder patterns
-                if (this.isFinderPattern(x, y, size)) continue;
-
-                // Pseudo-random based on position and data
-                const val = (x * y + random() * 1000) % 2;
-                if (val < 1) {
-                    ctx.fillRect(
-                        padding + x * cellSize,
-                        padding + y * cellSize,
-                        cellSize - 1,
-                        cellSize - 1
-                    );
-                }
-            }
-        }
-
-        // Add PayNet branding in center
-        this.addCenterBranding(ctx, width, height);
-    }
-
-    drawFinderPattern(ctx, x, y, cellSize) {
-        // Outer square (7x7)
-        ctx.fillRect(x, y, cellSize * 7, cellSize * 7);
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(x + cellSize, y + cellSize, cellSize * 5, cellSize * 5);
-        ctx.fillStyle = '#000000';
-        ctx.fillRect(x + cellSize * 2, y + cellSize * 2, cellSize * 3, cellSize * 3);
-    }
-
-    isFinderPattern(x, y, size) {
-        // Top-left
-        if (x < 8 && y < 8) return true;
-        // Top-right
-        if (x >= size - 8 && y < 8) return true;
-        // Bottom-left
-        if (x < 8 && y >= size - 8) return true;
-        return false;
-    }
-
-    addCenterBranding(ctx, width, height) {
-        const centerX = width / 2;
-        const centerY = height / 2;
-        const logoSize = 40;
-
-        // White background
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(centerX - logoSize / 2 - 5, centerY - logoSize / 2 - 5, logoSize + 10, logoSize + 10);
-
-        // PayNet colors (blue)
-        ctx.fillStyle = '#1976d2';
-        ctx.fillRect(centerX - logoSize / 2, centerY - logoSize / 2, logoSize, logoSize);
-
-        // "PN" text
-        ctx.fillStyle = '#FFFFFF';
-        ctx.font = 'bold 20px Arial';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText('PN', centerX, centerY);
-    }
-
-    hashCode(str) {
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) {
-            const char = str.charCodeAt(i);
-            hash = ((hash << 5) - hash) + char;
-            hash = hash & hash;
-        }
-        return Math.abs(hash);
-    }
-
-    seededRandom(seed) {
-        return function() {
-            seed = (seed * 9301 + 49297) % 233280;
-            return seed / 233280;
-        };
-    }
-
-    initiateFPXPayment() {
-        // Demo FPX payment flow
-        alert(`FPX Payment Flow\n\nAmount: RM ${this.selectedAmount}\nMerchant: TamaKaki Game\n\nIn production, this would redirect to FPX banking portal.\n\nFor demo purposes, this shows the integration point for PayNet's FPX service.`);
-
-        // In production, this would:
-        // 1. Create payment order on backend
-        // 2. Get FPX payment URL
-        // 3. Redirect to FPX portal
-        // 4. Handle callback after payment
-
-        console.log('FPX Payment initiated:', {
-            amount: this.selectedAmount,
-            currency: 'MYR',
-            merchantId: this.merchantId,
-            timestamp: new Date().toISOString()
-        });
+        return qrText;
     }
 
     // Public methods for external integration

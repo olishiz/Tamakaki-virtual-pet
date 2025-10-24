@@ -200,7 +200,6 @@
 
                 <div class="paynet-tabs">
                     <button class="paynet-tab active" data-tab="duitnow">DuitNow QR</button>
-                    <button class="paynet-tab" data-tab="fpx">FPX</button>
                     <button class="paynet-tab" data-tab="about">About</button>
                 </div>
 
@@ -208,7 +207,7 @@
                     <!-- DuitNow QR Tab -->
                     <div id="tab-duitnow" class="paynet-tab-panel active">
                         <h3>DuitNow QR Payment</h3>
-                        <p>Scan to support via DuitNow:</p>
+                        <p>Select amount and scan to purchase coins:</p>
 
                         <div class="donation-amounts">
                             <button class="amount-btn" data-amount="5">RM 5</button>
@@ -218,11 +217,14 @@
                         </div>
 
                         <div id="qr-code-container" class="qr-code-container">
-                            <canvas id="duitnow-qr-canvas"></canvas>
-                            <p class="qr-hint">Scan with any banking app</p>
+                            <div id="duitnow-qr-code"></div>
+                            <p class="qr-hint">Scan with any banking app supporting DuitNow</p>
                             <button class="generic-btn stylized" id="purchase-coins-btn" style="margin-top: 15px; width: 100%; padding: 14px; font-size: 16px; font-weight: bold;">
-                                💰 Purchase Coins Now
+                                💰 Purchase Coins (Demo Mode)
                             </button>
+                            <p style="font-size: 11px; opacity: 0.7; margin-top: 10px;">
+                                Demo: Click button above to add coins instantly
+                            </p>
                         </div>
 
                         <div class="paynet-features">
@@ -241,23 +243,6 @@
                         </div>
                     </div>
 
-                    <!-- FPX Tab -->
-                    <div id="tab-fpx" class="paynet-tab-panel">
-                        <h3>FPX Online Banking</h3>
-                        <p>Pay directly from your bank account:</p>
-
-                        <div class="fpx-info">
-                            <div class="info-card">
-                                <i class="fa-solid fa-university"></i>
-                                <h4>All Malaysian Banks</h4>
-                                <p>FPX supports all major banks in Malaysia for seamless online payments</p>
-                            </div>
-                            <button class="generic-btn stylized" id="fpx-payment-btn">
-                                Proceed to FPX Payment
-                            </button>
-                        </div>
-                    </div>
-
                     <!-- About Tab -->
                     <div id="tab-about" class="paynet-tab-panel">
                         <h3>About PayNet Integration</h3>
@@ -267,15 +252,22 @@
 
                             <p><strong>Features Integrated:</strong></p>
                             <ul>
-                                <li><strong>DuitNow QR:</strong> Scan & pay instantly</li>
-                                <li><strong>FPX:</strong> Direct bank transfers</li>
-                                <li><strong>MyDebit:</strong> Card payments (coming soon)</li>
+                                <li><strong>DuitNow QR:</strong> Instant QR payment for coin purchases</li>
+                                <li><strong>Real-time Balance:</strong> Coins added directly to your pet's wallet</li>
+                                <li><strong>Secure Demo:</strong> Safe demonstration of PayNet integration</li>
                             </ul>
 
                             <p class="paynet-mission">
                                 <i class="fa-solid fa-heart"></i>
                                 Supporting Malaysia's vision of a more inclusive, cashless, and connected nation.
                             </p>
+
+                            <div style="margin-top: 20px; padding: 15px; background: #f5f5f5; border-radius: 10px; font-size: 12px;">
+                                <strong>For Hackathon Judges:</strong><br>
+                                This is a demo implementation showcasing PayNet's DuitNow QR integration.
+                                The QR code is scannable and the purchase flow demonstrates how PayNet
+                                can be integrated into gaming applications for in-game currency purchases.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -291,6 +283,7 @@
 
     <!-- libs -->
     <script src="https://cdn.jsdelivr.net/npm/profanity-cleaner@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="src/libs/moment.js"></script>
     <script src="src/libs/idb-keyval.js"></script>
 

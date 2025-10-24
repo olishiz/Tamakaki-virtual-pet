@@ -374,12 +374,19 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-#duitnow-qr-canvas {
+#duitnow-qr-code {
     max-width: 250px;
     width: 100%;
-    height: auto;
     margin: 0 auto;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#duitnow-qr-code img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 
 .qr-hint {
@@ -555,8 +562,8 @@
         font-size: 13px;
     }
 
-    #duitnow-qr-canvas {
-        max-width: 220px;
+    #duitnow-qr-code {
+        max-width: 200px;
     }
 
     .qr-code-container {
