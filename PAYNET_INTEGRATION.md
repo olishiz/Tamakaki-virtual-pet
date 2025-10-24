@@ -117,6 +117,63 @@ This integration supports PayNet's vision of:
 - ✅ **Cashless**: Promotes digital payments over cash
 - ✅ **Connected**: Links game community with payment ecosystem
 
+## Testing the Integration
+
+### Quick Test
+1. Start local server: `python3 -m http.server 5500`
+2. Open test page: `http://localhost:5500/test-paynet.html`
+3. Click simulation buttons to test payment flows
+
+### Test Scenarios
+
+#### ✅ Successful Payment Flow
+1. Click "PayNet Demo" button
+2. Select amount (default: RM 10)
+3. Click "✅ Simulate Successful Payment"
+4. **Expected behavior:**
+   - Modal closes immediately
+   - "Processing Payment..." popup appears (2.5s)
+   - Processing popup replaced with success message
+   - Balance increases by coin amount
+   - Success popup auto-closes after 7 seconds
+   - Console logs show detailed transaction info
+
+#### ❌ Failed Payment Flow
+1. Click "PayNet Demo" button
+2. Select amount
+3. Click "❌ Simulate Failed Payment"
+4. **Expected behavior:**
+   - Modal closes immediately
+   - "Processing Payment..." popup appears (2.5s)
+   - Processing popup replaced with failure message
+   - Balance remains unchanged
+   - Error code displayed
+   - Failure popup auto-closes after 7 seconds
+   - Console logs show failure reason
+
+### Console Logging
+All actions are logged to browser console for debugging:
+- `🔷 PayNet: Opening modal`
+- `💰 PayNet: Amount selected - RM X (Y coins)`
+- `📱 PayNet: Generating QR code for RM X`
+- `🔄 Processing payment...`
+- `✅ Payment simulation successful: { amount, coins, oldBalance, newBalance }`
+- `❌ Payment simulation failed: { amount, reason }`
+
+### Behind the Scenes
+See `PAYNET_BEHIND_THE_SCENES.md` for detailed technical flow documentation.
+
+### Automated Testing
+Run the test script:
+```bash
+chmod +x test-paynet.sh
+./test-paynet.sh
+```
+
+This verifies all files are present and properly structured.
+
+---
+
 ## Demo
 The PayNet integration is live on the feature branch and will be visible once deployed to GitHub Pages.
 
