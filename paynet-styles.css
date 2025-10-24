@@ -18,11 +18,30 @@
 /* Mobile: Fixed to bottom of screen */
 @media (max-width: 768px) {
     .paynet-game-button {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1000;
+        position: fixed !important;
+        bottom: 0px !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        background: linear-gradient(to top, rgba(255,255,255,0.98), rgba(255,255,255,0.95));
+        padding: 12px 0 !important;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+        border-top: 2px solid #e3f2fd;
+        z-index: 9999 !important;
+        animation: slideUpBottom 0.5s ease-out;
+        margin: 0 !important;
+    }
+
+    @keyframes slideUpBottom {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 }
 
@@ -556,10 +575,6 @@
 
 /* Extra small mobile devices */
 @media (max-width: 380px) {
-    .paynet-game-button {
-        bottom: 15px;
-    }
-
     .paynet-game-icon {
         width: 40px;
         height: 40px;
@@ -576,8 +591,12 @@
     }
 
     .paynet-game-label {
-        font-size: 8px;
-        padding: 2px 6px;
+        font-size: 9px;
+        padding: 3px 8px;
+    }
+
+    .paynet-game-button {
+        padding: 10px 0 !important;
     }
 
     .paynet-header h2 {
@@ -608,6 +627,15 @@
     }
 
     .paynet-game-button {
-        bottom: 15px;
+        padding: 8px 0 !important;
+    }
+
+    .paynet-game-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .paynet-game-label {
+        font-size: 9px;
     }
 }
