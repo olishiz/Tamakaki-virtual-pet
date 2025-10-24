@@ -1,0 +1,390 @@
+/* PayNet Integration Styles */
+
+.paynet-floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1976d2, #42a5f5);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    transition: all 0.3s ease;
+    z-index: 999;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.paynet-floating-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(25, 118, 210, 0.6);
+}
+
+.paynet-floating-button:active {
+    transform: scale(0.95);
+}
+
+.paynet-floating-button svg {
+    margin-bottom: 2px;
+}
+
+/* Modal Styles */
+.paynet-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.paynet-modal-content {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.paynet-header {
+    background: linear-gradient(135deg, #1976d2, #42a5f5);
+    color: white;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paynet-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.paynet-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.paynet-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.paynet-body {
+    padding: 20px;
+}
+
+.paynet-logo-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.paynet-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #4caf50, #66bb6a);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.paynet-description {
+    color: #1976d2;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+/* Tabs */
+.paynet-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #90caf9;
+}
+
+.paynet-tab {
+    flex: 1;
+    padding: 12px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #1976d2;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+.paynet-tab:hover {
+    background: rgba(25, 118, 210, 0.1);
+}
+
+.paynet-tab.active {
+    border-bottom-color: #1976d2;
+    color: #0d47a1;
+}
+
+.paynet-tab-panel {
+    display: none;
+}
+
+.paynet-tab-panel.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.paynet-tab-panel h3 {
+    color: #1976d2;
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.paynet-tab-panel p {
+    color: #0d47a1;
+    margin: 10px 0;
+}
+
+/* Donation Amounts */
+.donation-amounts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.amount-btn {
+    padding: 12px;
+    background: white;
+    border: 2px solid #42a5f5;
+    border-radius: 10px;
+    color: #1976d2;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.amount-btn:hover {
+    background: #e3f2fd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(25, 118, 210, 0.2);
+}
+
+.amount-btn.selected {
+    background: linear-gradient(135deg, #1976d2, #42a5f5);
+    color: white;
+    border-color: #1976d2;
+}
+
+/* QR Code Container */
+.qr-code-container {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#duitnow-qr-canvas {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.qr-hint {
+    color: #666;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+/* Features */
+.paynet-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 15px 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.feature-item i {
+    font-size: 24px;
+    color: #1976d2;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.feature-item span {
+    font-size: 12px;
+    color: #0d47a1;
+    font-weight: bold;
+    display: block;
+}
+
+/* FPX Section */
+.fpx-info {
+    text-align: center;
+}
+
+.info-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info-card i {
+    font-size: 48px;
+    color: #1976d2;
+    margin-bottom: 15px;
+}
+
+.info-card h4 {
+    color: #1976d2;
+    margin: 10px 0;
+}
+
+.info-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+#fpx-payment-btn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 16px;
+}
+
+/* About Section */
+.about-content {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-content p {
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.about-content ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.about-content li {
+    margin: 8px 0;
+    color: #0d47a1;
+}
+
+.paynet-mission {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-left: 4px solid #4caf50;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.paynet-mission i {
+    color: #f44336;
+    margin-right: 8px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .paynet-floating-button {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 8px;
+    }
+
+    .paynet-modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .paynet-header h2 {
+        font-size: 16px;
+    }
+
+    .donation-amounts {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .paynet-features {
+        grid-template-columns: 1fr;
+    }
+
+    .paynet-tabs {
+        flex-direction: column;
+    }
+
+    .paynet-tab {
+        border-bottom: 2px solid transparent;
+        border-left: 3px solid transparent;
+    }
+
+    .paynet-tab.active {
+        border-bottom-color: transparent;
+        border-left-color: #1976d2;
+    }
+}

@@ -26,6 +26,7 @@
     <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="themes.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="paynet-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" integrity="sha512-d0olNN35C6VLiulAobxYHZiXJmq+vl+BGIgAxQtD5+kqudro/xNMvv2yIHAciGHpExsIbKX3iLg+0B6d0k4+ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" integrity="sha512-pZlKGs7nEqF4zoG0egeK167l6yovsuL8ap30d07kA5AJUq+WysFlQ02DLXAmN3n0+H3JVz5ni8SJZnrOaYXWBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -161,6 +162,112 @@
         <button id="install-pwa-app">Add to home screen</button>
     </div>
 
+    <!-- PayNet Integration Button -->
+    <button id="paynet-fab" class="paynet-floating-button" title="Support via PayNet">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+        </svg>
+        <span>PayNet</span>
+    </button>
+
+    <!-- PayNet Modal -->
+    <div id="paynet-modal" class="paynet-modal" style="display: none;">
+        <div class="paynet-modal-content">
+            <div class="paynet-header">
+                <h2>Support TamaKaki via PayNet</h2>
+                <button class="paynet-close" id="paynet-close-btn">&times;</button>
+            </div>
+
+            <div class="paynet-body">
+                <div class="paynet-logo-section">
+                    <div class="paynet-badge">PayNet Integrated</div>
+                    <p class="paynet-description">
+                        Support this project using Malaysia's trusted payment network!
+                    </p>
+                </div>
+
+                <div class="paynet-tabs">
+                    <button class="paynet-tab active" data-tab="duitnow">DuitNow QR</button>
+                    <button class="paynet-tab" data-tab="fpx">FPX</button>
+                    <button class="paynet-tab" data-tab="about">About</button>
+                </div>
+
+                <div class="paynet-tab-content">
+                    <!-- DuitNow QR Tab -->
+                    <div id="tab-duitnow" class="paynet-tab-panel active">
+                        <h3>DuitNow QR Payment</h3>
+                        <p>Scan to support via DuitNow:</p>
+
+                        <div class="donation-amounts">
+                            <button class="amount-btn" data-amount="5">RM 5</button>
+                            <button class="amount-btn" data-amount="10">RM 10</button>
+                            <button class="amount-btn" data-amount="25">RM 25</button>
+                            <button class="amount-btn" data-amount="50">RM 50</button>
+                        </div>
+
+                        <div id="qr-code-container" class="qr-code-container">
+                            <canvas id="duitnow-qr-canvas"></canvas>
+                            <p class="qr-hint">Scan with any banking app</p>
+                        </div>
+
+                        <div class="paynet-features">
+                            <div class="feature-item">
+                                <i class="fa-solid fa-shield-alt"></i>
+                                <span>Secure Payment</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>Instant Transfer</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fa-solid fa-mobile-alt"></i>
+                                <span>All Banks Supported</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FPX Tab -->
+                    <div id="tab-fpx" class="paynet-tab-panel">
+                        <h3>FPX Online Banking</h3>
+                        <p>Pay directly from your bank account:</p>
+
+                        <div class="fpx-info">
+                            <div class="info-card">
+                                <i class="fa-solid fa-university"></i>
+                                <h4>All Malaysian Banks</h4>
+                                <p>FPX supports all major banks in Malaysia for seamless online payments</p>
+                            </div>
+                            <button class="generic-btn stylized" id="fpx-payment-btn">
+                                Proceed to FPX Payment
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- About Tab -->
+                    <div id="tab-about" class="paynet-tab-panel">
+                        <h3>About PayNet Integration</h3>
+                        <div class="about-content">
+                            <p><strong>Why PayNet?</strong></p>
+                            <p>This project integrates PayNet's ecosystem to enable cashless, secure payments for the Malaysian community.</p>
+
+                            <p><strong>Features Integrated:</strong></p>
+                            <ul>
+                                <li><strong>DuitNow QR:</strong> Scan & pay instantly</li>
+                                <li><strong>FPX:</strong> Direct bank transfers</li>
+                                <li><strong>MyDebit:</strong> Card payments (coming soon)</li>
+                            </ul>
+
+                            <p class="paynet-mission">
+                                <i class="fa-solid fa-heart"></i>
+                                Supporting Malaysia's vision of a more inclusive, cashless, and connected nation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- data & resources -->
     <script src="resources/data/SpriteDefinitions.js"></script>
     <script src="resources/data/CharacterDefinitions.js"></script>
@@ -187,6 +294,7 @@
     <script src="src/App.js"></script>
     <script src="src/Definitions.js"></script>
     <script src="src/Missions.js"></script>
+    <script src="src/PayNet.js"></script>
     <script src="src/Main.js"></script>
 </body>
 </html>
