@@ -938,10 +938,11 @@ const App = {
             ])
         }, false)) return;
 
-        if(addEvent('itch_rating_dialog', () => {
-            App.handlers.show_rating_dialog();
-            App.sendAnalytics('rating_auto_shown');
-        })) return;
+        // Rating dialog disabled for demo
+        // if(addEvent('itch_rating_dialog', () => {
+        //     App.handlers.show_rating_dialog();
+        //     App.sendAnalytics('rating_auto_shown');
+        // })) return;
 
         // if(addEvent(`smallchange_01_notice`, () => {
         //     App.displayConfirm('The <b>Stay with parents</b> option is now moved to the <i class="fa-solid fa-house-chimney-user"></i> care menu', [

@@ -1,10 +1,11 @@
 /* PayNet Integration Styles */
 
-/* PayNet Game Button - Floating near pet/egg */
+/* PayNet Game Button - Floating below pet/egg */
 .paynet-game-button {
     position: absolute;
-    bottom: 12%;
-    right: 8%;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -16,11 +17,11 @@
 
 @keyframes floatIn {
     0% {
-        transform: translateY(20px) scale(0.8);
+        transform: translateX(-50%) translateY(20px) scale(0.8);
         opacity: 0;
     }
     100% {
-        transform: translateY(0) scale(1);
+        transform: translateX(-50%) translateY(0) scale(1);
         opacity: 1;
     }
 }
@@ -91,6 +92,23 @@
 
 .paynet-game-button:active .paynet-game-label {
     transform: scale(0.95);
+}
+
+#purchase-coins-btn {
+    background: linear-gradient(135deg, #4caf50, #66bb6a);
+    border-color: #388e3c;
+    transition: all 0.2s ease;
+}
+
+#purchase-coins-btn:hover {
+    background: linear-gradient(135deg, #66bb6a, #81c784);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+#purchase-coins-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
 }
 
 /* Floating button - for desktop */
@@ -444,8 +462,7 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .paynet-game-button {
-        bottom: 10%;
-        right: 6%;
+        bottom: 6%;
     }
 
     .paynet-game-icon {
@@ -533,8 +550,7 @@
 /* Extra small mobile devices */
 @media (max-width: 380px) {
     .paynet-game-button {
-        bottom: 8%;
-        right: 4%;
+        bottom: 5%;
     }
 
     .paynet-game-icon {
@@ -585,7 +601,6 @@
     }
 
     .paynet-game-button {
-        bottom: 8%;
-        right: 5%;
+        bottom: 5%;
     }
 }

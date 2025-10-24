@@ -9,6 +9,15 @@ class PayNetIntegration {
         this.fabButton = null;
         this.selectedAmount = 10; // Default RM 10
         this.merchantId = "TAMAKAKI2025"; // Demo merchant ID
+
+        // Coin conversion rates: RM to coins (1 RM = 10 coins)
+        this.coinRates = {
+            5: 50,    // RM 5 = 50 coins
+            10: 100,  // RM 10 = 100 coins
+            25: 250,  // RM 25 = 250 coins
+            50: 500   // RM 50 = 500 coins
+        };
+
         this.init();
     }
 
@@ -71,6 +80,12 @@ class PayNetIntegration {
             fpxBtn.addEventListener('click', () => this.initiateFPXPayment());
         }
 
+        // Purchase coins button
+        const purchaseBtn = document.getElementById('purchase-coins-btn');
+        if (purchaseBtn) {
+            purchaseBtn.addEventListener('click', () => this.purchaseCoins());
+        }
+
         // Select default amount
         const defaultBtn = document.querySelector('.amount-btn[data-amount="10"]');
         if (defaultBtn) {
@@ -82,6 +97,9 @@ class PayNetIntegration {
         if (this.modal) {
             this.modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+
+            // Update coin display when modal opens
+            setTimeout(() => this.updateCoinDisplay(), 100);
         }
     }
 
@@ -115,8 +133,88 @@ class PayNetIntegration {
         // Update selected amount
         this.selectedAmount = parseInt(button.dataset.amount);
 
+        // Update coin display
+        this.updateCoinDisplay();
+
         // Regenerate QR code
         this.generateDuitNowQR();
+    }
+
+    updateCoinDisplay() {
+        const coins = this.coinRates[this.selectedAmount] || 0;
+
+        // Update all amount buttons to show coins
+        const amountButtons = document.querySelectorAll('.amount-btn');
+        amountButtons.forEach(btn => {
+            const amount = parseInt(btn.dataset.amount);
+            const coinAmount = this.coinRates[amount] || 0;
+            btn.innerHTML = `RM ${amount}<br><small style="opacity: 0.8; font-size: 11px;">${coinAmount} coins</small>`;
+        });
+    }
+
+    purchaseCoins() {
+        const coins = this.coinRates[this.selectedAmount] || 0;
+
+        if (typeof App === 'undefined' || !App.petDefinition) {
+            alert('Game not ready. Please try again.');
+            return;
+        }
+
+        // Show confirmation
+        const confirmed = confirm(
+            `Purchase ${coins} coins for RM ${this.selectedAmount}?\n\n` +
+            `This will add ${coins} coins to your pet's money!`
+        );
+
+        if (!confirmed) return;
+
+        // Add coins to pet's money
+        if (typeof App.petDefinition.golds !== 'undefined') {
+            const oldAmount = App.petDefinition.golds;
+            App.petDefinition.golds += coins;
+
+            // Save the game
+            if (typeof App.save === 'function') {
+                App.save();
+            }
+
+            // Show success message
+            this.showPurchaseSuccess(coins, oldAmount, App.petDefinition.golds);
+
+            // Track purchase
+            this.trackPayment(this.selectedAmount, 'duitnow-demo');
+        } else {
+            alert('Error: Unable to add coins. Please try again.');
+        }
+    }
+
+    showPurchaseSuccess(coins, oldAmount, newAmount) {
+        // Close the modal
+        this.closeModal();
+
+        // Show success notification
+        if (typeof App.displayPopup === 'function') {
+            App.displayPopup(
+                `<div style="text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 10px;">💰</div>
+                    <div style="font-size: 18px; font-weight: bold; color: #4caf50; margin-bottom: 8px;">
+                        Purchase Successful!
+                    </div>
+                    <div style="font-size: 14px; margin-bottom: 5px;">
+                        +${coins} coins added!
+                    </div>
+                    <div style="font-size: 12px; opacity: 0.8;">
+                        ${oldAmount} → ${newAmount} coins
+                    </div>
+                    <div style="margin-top: 10px; font-size: 11px; opacity: 0.7;">
+                        Thank you for supporting TamaKaki via PayNet! 🎉
+                    </div>
+                </div>`,
+                5000
+            );
+        } else {
+            alert(`Success! +${coins} coins added!\n\nYour balance: ${newAmount} coins`);
+        }
     }
 
     generateDuitNowQR() {
