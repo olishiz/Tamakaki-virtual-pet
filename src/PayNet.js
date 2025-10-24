@@ -24,11 +24,17 @@ class PayNetIntegration {
     setupEventListeners() {
         this.modal = document.getElementById('paynet-modal');
         this.fabButton = document.getElementById('paynet-fab');
+        this.demoBanner = document.getElementById('paynet-demo-banner');
         const closeBtn = document.getElementById('paynet-close-btn');
 
-        // Open modal
+        // Open modal from floating button
         if (this.fabButton) {
             this.fabButton.addEventListener('click', () => this.openModal());
+        }
+
+        // Open modal from demo banner (for mobile/presentation)
+        if (this.demoBanner) {
+            this.demoBanner.addEventListener('click', () => this.openModal());
         }
 
         // Close modal
