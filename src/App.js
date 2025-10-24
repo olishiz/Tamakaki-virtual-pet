@@ -4947,12 +4947,8 @@ const App = {
                 {
                     name: `friends`,
                     onclick: () => {
-                        App.handlers.open_friends_list(null, null, [
-                            {
-                                name: `<i class="fa-solid fa-plus icon"></i> Add Friend`,
-                                onclick: () => App.handlers.open_hubchi_search(),
-                            }
-                        ]);
+                        // Removed HUBCHI "Add Friend" button for demo
+                        App.handlers.open_friends_list(null, null, []);
                         return true;
                     }
                 },
