@@ -24,7 +24,7 @@ class PayNetIntegration {
     setupEventListeners() {
         this.modal = document.getElementById('paynet-modal');
         this.fabButton = document.getElementById('paynet-fab');
-        this.demoBanner = document.getElementById('paynet-demo-banner');
+        this.gameButton = document.getElementById('paynet-game-btn');
         const closeBtn = document.getElementById('paynet-close-btn');
 
         // Open modal from floating button
@@ -32,9 +32,9 @@ class PayNetIntegration {
             this.fabButton.addEventListener('click', () => this.openModal());
         }
 
-        // Open modal from demo banner (for mobile/presentation)
-        if (this.demoBanner) {
-            this.demoBanner.addEventListener('click', () => this.openModal());
+        // Open modal from game button (main button near pet)
+        if (this.gameButton) {
+            this.gameButton.addEventListener('click', () => this.openModal());
         }
 
         // Close modal

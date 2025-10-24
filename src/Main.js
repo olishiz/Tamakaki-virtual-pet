@@ -96,7 +96,10 @@ class AudioChannel {
 function handleServiceWorker(){
     const isOnItch = location.host.indexOf('itch') !== -1;
     if(!navigator?.serviceWorker || isOnItch) return;
-    
+
+    // Service worker disabled for demo - no update popups
+    return;
+
     let shownControllerChangeModal = false;
     navigator?.serviceWorker?.register('service-worker.js').then((registration) => {
         console.log('Service Worker Registered')

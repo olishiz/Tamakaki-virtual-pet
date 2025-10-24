@@ -4746,6 +4746,7 @@ const App = {
         },
         open_phone: function(){
             App.displayList([
+                /* HUBCHI - Hidden for demo
                 {
                     _disable: App.petDefinition.lifeStage <= PetDefinition.LIFE_STAGE.baby,
                     name: `<span style="color: #ff00c6"><i class="icon fa-solid fa-globe"></i> hubchi</span>`,
@@ -4933,6 +4934,16 @@ const App = {
                         return true;
                     }
                 },
+                */ // End HUBCHI comment
+                /* SnapMeal - Hidden for demo
+                {
+                    _disable: App.petDefinition.lifeStage <= PetDefinition.LIFE_STAGE.baby,
+                    name: `<span style="color: mediumvioletred"> <i class="fa-solid fa-burger icon"></i> SnapMeal </span>`,
+                    onclick: () => {
+                        return App.displayPopup('SnapMeal is temporarily unavailable for this demo.', 3000);
+                    }
+                },
+                */ // End SnapMeal comment
                 {
                     name: `friends`,
                     onclick: () => {
