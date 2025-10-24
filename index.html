@@ -218,28 +218,20 @@
 
                         <div id="qr-code-container" class="qr-code-container">
                             <div id="duitnow-qr-code"></div>
-                            <p class="qr-hint">Scan with any banking app supporting DuitNow</p>
-                            <button class="generic-btn stylized" id="purchase-coins-btn" style="margin-top: 15px; width: 100%; padding: 14px; font-size: 16px; font-weight: bold;">
-                                💰 Purchase Coins (Demo Mode)
-                            </button>
-                            <p style="font-size: 11px; opacity: 0.7; margin-top: 10px;">
-                                Demo: Click button above to add coins instantly
-                            </p>
-                        </div>
+                            <p class="qr-hint">Scan with Touch'n Go eWallet or any DuitNow-enabled banking app</p>
 
-                        <div class="paynet-features">
-                            <div class="feature-item">
-                                <i class="fa-solid fa-shield-alt"></i>
-                                <span>Secure Payment</span>
+                            <div class="simulation-buttons">
+                                <button class="generic-btn stylized simulation-success-btn" id="simulate-success-btn">
+                                    ✅ Simulate Successful Payment
+                                </button>
+                                <button class="generic-btn stylized simulation-fail-btn" id="simulate-fail-btn">
+                                    ❌ Simulate Failed Payment
+                                </button>
                             </div>
-                            <div class="feature-item">
-                                <i class="fa-solid fa-bolt"></i>
-                                <span>Instant Transfer</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fa-solid fa-mobile-alt"></i>
-                                <span>All Banks Supported</span>
-                            </div>
+
+                            <p style="font-size: 11px; opacity: 0.7; margin-top: 15px;">
+                                <strong>For Demo:</strong> Scan QR with Touch'n Go app, or use simulation buttons above
+                            </p>
                         </div>
                     </div>
 
